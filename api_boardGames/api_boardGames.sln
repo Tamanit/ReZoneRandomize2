@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api_boardGames", "api_boardGames.csproj", "{425F335E-D44A-4F3C-87B7-6A2661C4ABFD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{425F335E-D44A-4F3C-87B7-6A2661C4ABFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{425F335E-D44A-4F3C-87B7-6A2661C4ABFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{425F335E-D44A-4F3C-87B7-6A2661C4ABFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{425F335E-D44A-4F3C-87B7-6A2661C4ABFD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

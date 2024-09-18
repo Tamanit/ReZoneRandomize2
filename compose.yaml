@@ -1,0 +1,62 @@
+services:
+  node:
+    container_name: ${APP_NAME}-node
+    build:
+      context: .
+      dockerfile: docker.dev/client/Dockerfile
+    depends_on:
+      - api
+    networks:
+      - client
+    volumes:
+      - ./client:/app/client
+
+  nginx:
+    container_name: ${APP_NAME}-nginx
+    build:
+      context: .
+      dockerfile: docker.dev/nginx/Dockerfile
+    ports:
+      - '${NGINX_PORT}:80'
+    networks:
+      - server
+      - client
+    depends_on:
+      - api
+      - node
+    environment:
+      DOMAIN: ${DOMAIN}
+
+  api:
+    container_name: ${APP_NAME}-api
+    build:
+      context: .
+      dockerfile: docker.dev/api_boardGames/Dockerfile
+    volumes:
+      - ./api:/app/api
+    networks:
+      - server
+      - db
+    depends_on:
+      - db
+
+  db:
+    container_name: ${APP_NAME}-db
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - '${DB_PORT}:5432'
+    environment:
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_DB: ${DATABASE_NAME}
+    networks:
+      - db
+
+networks:
+  server:
+    driver: bridge
+  client:
+    driver: bridge
+  db:
+    driver: bridge
